@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/600.css';
+@import '@fontsource/space-grotesk/700.css';
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 180 100% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 270 80% 60%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 30% 15%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 270 80% 60%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 160 84% 45%;
+    --success-foreground: 222 47% 6%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 12%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom glow effects */
+    --glow-primary: 0 0 20px hsl(180 100% 50% / 0.5), 0 0 40px hsl(180 100% 50% / 0.3);
+    --glow-secondary: 0 0 20px hsl(270 80% 60% / 0.5), 0 0 40px hsl(270 80% 60% / 0.3);
+    --glow-success: 0 0 20px hsl(160 84% 45% / 0.5), 0 0 40px hsl(160 84% 45% / 0.3);
+    --glow-error: 0 0 20px hsl(0 72% 55% / 0.5), 0 0 40px hsl(0 72% 55% / 0.3);
+
+    /* Grid cell colors */
+    --cell-inactive: 222 30% 12%;
+    --cell-hover: 180 100% 50% / 0.2;
+    --cell-active: 180 100% 50%;
+    --cell-path: 270 80% 60%;
+
+    /* Pattern colors for color challenge */
+    --pattern-red: 0 84% 60%;
+    --pattern-blue: 210 100% 56%;
+    --pattern-green: 142 76% 45%;
+    --pattern-yellow: 48 96% 53%;
+    --pattern-purple: 270 80% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+
+  .glow-success {
+    box-shadow: var(--glow-success);
+  }
+
+  .glow-error {
+    box-shadow: var(--glow-error);
+  }
+
+  .text-glow-primary {
+    text-shadow: 0 0 10px hsl(180 100% 50% / 0.8), 0 0 20px hsl(180 100% 50% / 0.5);
+  }
+
+  .text-glow-secondary {
+    text-shadow: 0 0 10px hsl(270 80% 60% / 0.8), 0 0 20px hsl(270 80% 60% / 0.5);
+  }
+
+  .grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .scanline {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      hsl(180 100% 50% / 0.03) 50%,
+      transparent 100%
+    );
+    animation: scanline 8s linear infinite;
+  }
+
+  @keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
